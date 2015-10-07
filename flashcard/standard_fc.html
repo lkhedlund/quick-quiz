@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flashcards</title>
+    <!-- Google's MDL Framework: This is where all of the visual styling comes from. Feel free to use it as is! Google has left the project open to everyone -->
+      <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.indigo-pink.min.css">
+      <script src="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.min.js"></script>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  	<!-- jQuery -->
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  	<!-- Local Framework -->
+      <!-- Questions location (MUST be called before the App)-->
+      <script src='cards.js'></script>
+      <!-- App location -->
+  		<script src='FlashcardApp.js'></script>
+</head>
+<body>
+  <div class="card-wide mdl-card mdl-shadow--2dp" style="min-width: 33%;">
+    <div class="mdl-card__supporting-text">
+      <h1 id="flashcard" style="text-align: center;">
+        <!-- the flashcard will load here -->
+      </h1>
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="next">Next</button>
+      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="float: right;" id="flip">Flip</button>
+    </div>
+  </div>
+
+<!-- Start of Javascript -->
+<script>
+    $(document).ready(function() {
+		FlashcardApp.init();
+    });
+
+    $('#flip, #next').on('click', function() {
+        FlashcardApp.flip_card(this.id);
+    });
+</script>
+</body>
+</html>
