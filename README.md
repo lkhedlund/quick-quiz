@@ -1,6 +1,6 @@
-# Welcome to Student Testing Apps by Lars Hedlund
+# Interactive Student Applications
 
-Web modules containing quizzes, flashcards, and other apps to help teachers connect with students. I created these apps for a university professor I worked closely with in the past as part of a site-wide redesign. I hope others will find it useful for their classes as well.
+This repository houses web modules containing quizzes, flashcards, and other apps to help teachers connect with students. I created these apps for a university professor I worked closely with in the past as part of a site-wide redesign. I hope others will find it useful for their classes as well.
 
 ## No server-side support is required!
 
