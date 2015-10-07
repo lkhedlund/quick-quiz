@@ -1,61 +1,136 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Interactive Student Applications by lkhedlund</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Material Design Lite</title>
+    <!-- Google's MDL Framework: This is where all of the visual styling comes from. Feel free to use it as is! Google has left the project open to everyone -->
+       <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.blue-amber.min.css" />
+      <script src="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.min.js"></script>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+    #view-source {
+      position: fixed;
+      display: block;
+      right: 0;
+      bottom: 0;
+      margin-right: 40px;
+      margin-bottom: 40px;
+      z-index: 900;
+    }
+    .ribbon {
+      width: 100%;
+      height: 80vh;
+      background: url("images/allen_bg.jpg");
+      background-repeat: no-repeat;
+      background-size: 100%;
+      -webkit-flex-shrink: 0;
+          -ms-flex-negative: 0;
+              flex-shrink: 0;
+    }
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    .main {
+      margin-top: -60vh;
+      -webkit-flex-shrink: 0;
+          -ms-flex-negative: 0;
+              flex-shrink: 0;
+    }
+
+    .header .mdl-layout__header-row {
+      padding-left: 40px;
+    }
+
+    .container {
+      max-width: 1600px;
+      width: calc(100% - 16px);
+      margin: 0 auto;
+    }
+
+    .content {
+      border-radius: 2px;
+      padding: 80px 56px;
+      margin-bottom: 80px;
+    }
+
+    .layout.is-small-screen .content {
+      padding: 40px 28px;
+    }
+
+    .content h3 {
+      margin-top: 48px;
+    }
+
+    .footer {
+      padding-left: 40px;
+    }
+
+    .footer .mdl-mini-footer--link-list a {
+      font-size: 13px;
+    }
+    </style>
   </head>
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Interactive Student Applications</h1>
-        <p>Web modules containing quizzes, flashcards, and other apps to help teachers connect with students.</p>
 
-        <p class="view"><a href="https://github.com/lkhedlund/student-testing-apps">View the Project on GitHub <small>lkhedlund/student-testing-apps</small></a></p>
-
-
-        <ul>
-          <li><a href="https://github.com/lkhedlund/student-testing-apps/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/lkhedlund/student-testing-apps/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/lkhedlund/student-testing-apps">View On <strong>GitHub</strong></a></li>
-        </ul>
+    <div class="layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title">Interactive Student Applications</span>
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
+          <!-- Navigation. We hide it in small screens. -->
+          <nav class="mdl-navigation mdl-layout--large-screen-only">
+            <a class="mdl-navigation__link" href="https://github.com/lkhedlund/student-testing-apps/zipball/master">Download .ZIP</a>
+            <a class="mdl-navigation__link" href="https://github.com/lkhedlund/student-testing-apps/tarball/master">Download .TAR</a>
+            <a class="mdl-navigation__link" href="https://github.scom/lkhedlund/student-testing-apps">View on Github</a>
+          </nav>
+        </div>
       </header>
-      <section>
-        <p>This repository houses web modules containing quizzes, flashcards, and other apps to help teachers connect with students. I created these apps for a university professor I worked closely with in the past as part of a site-wide redesign. I hope others will find it useful for their classes as well.</p>
+      <div class="ribbon"></div>
+      <main class="main mdl-layout__content">
+        <div class="container mdl-grid">
+          <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+          <div class="content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+            <div class="crumbs mdl-color-text--grey-500">
+            lkhedlund &gt; gh-pages &gt; Interactive Student Applications
+            </div>
+            <h3>Interactive Student Applications</h3>
+            <p>Web modules containing quizzes, flashcards, and other apps to help teachers connect with students.</p>
 
-<h2>
-<a id="no-server-side-support-is-required" class="anchor" href="#no-server-side-support-is-required" aria-hidden="true"><span class="octicon octicon-link"></span></a>No server-side support is required!</h2>
+            <p>
 
-<p>You can change the exercise questions using the Javascript arrays contained in each folder. Everything can be uploaded, and will work, on a personal website or university-hosted site.</p>
+            </p>
 
-<h2>
-<a id="who-is-this-for" class="anchor" href="#who-is-this-for" aria-hidden="true"><span class="octicon octicon-link"></span></a>Who is this for?</h2>
+          <section>
+            <p>This repository houses web modules containing quizzes, flashcards, and other apps to help teachers connect with students. I created these apps for a university professor I worked closely with in the past as part of a site-wide redesign. I hope others will find it useful for their classes as well.</p>
 
-<p>Everyone, especially those without programming experience. I wanted to make something that was easy to make changes to and load up without much fuss. This ease is why I chose to use Google's Material Design framework for styling. You can add these to any website without having to play around with CSS and other scripts. Win-win!</p>
+            <h4>No server-side support is required!</h4>
 
-<h2>
-<a id="can-i-contributefork-this-project" class="anchor" href="#can-i-contributefork-this-project" aria-hidden="true"><span class="octicon octicon-link"></span></a>Can I contribute/fork this project?</h2>
+            <p>You can change the exercise questions using the Javascript arrays contained in each folder. Everything can be uploaded, and will work, on a personal website or university-hosted site.</p>
 
-<p>Please do! I wrote these with only a few weeks of Javascript under my belt (although experience in other programming languages helped considerably). These are bound to be a bit rough under the edges, but they work well and that's what matters, right?</p>
+            <h4>Who is this for?</h4>
 
-<h2>
-<a id="this-is-a-lot-of-text-is-there-a-good-way-to-view-the-code" class="anchor" href="#this-is-a-lot-of-text-is-there-a-good-way-to-view-the-code" aria-hidden="true"><span class="octicon octicon-link"></span></a>This is a lot of text! Is there a good way to view the code?</h2>
+            <p>Everyone, especially those without programming experience. I wanted to make something that was easy to make changes to and load up without much fuss. This ease is why I chose to use Google's Material Design framework for styling. You can add these to any website without having to play around with CSS and other scripts. Win-win!</p>
 
-<p>My personal recommendation is <a href="https://atom.io/">Atom</a>. It has delightful syntax highlighting and is available on every platform.</p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/lkhedlund">lkhedlund</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
+            <h4>Can I contribute/fork this project?</h4>
+
+            <p>Please do! I wrote these with only a few weeks of Javascript under my belt (although experience in other programming languages helped considerably). These are bound to be a bit rough under the edges, but they work well and that's what matters, right?</p>
+
+            <h4>I'm having a hard time reading the code. Is there a good way to view it?</h4>
+
+            <p>My personal recommendation is <a href="https://atom.io/">Atom</a>. It has delightful syntax highlighting and is available on every platform.</p>
+          </section>
+        </div>
+      </div>
+    <footer class="footer mdl-mini-footer">
+      <div class="mdl-mini-footer--left-section">
+        <footer>
+          <p>This project is maintained by <a href="https://github.com/lkhedlund">lkhedlund</a></p>
+      </div>
+    </footer>
+  </main>
+</div>
+</body>
 </html>
