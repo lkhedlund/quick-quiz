@@ -28,7 +28,7 @@ FlashcardApp.init = function() {
 };
 
 FlashcardApp.refresh = function() {
-    /* METHOD: Refreshes div ids that the question, answers, and options are written to. */
+    /* METHOD: Refreshes div ids that the flashcard is written to. */
     $('#flashcard').html('');
 };
 
@@ -38,7 +38,7 @@ FlashcardApp.load_card = function() {
      outer braces [] contain objects {} with key pairs.
      For example:
      var cards = [
-         {"question":"What is your <b>quest</b>?", "answer":"to seek the Holy Grail"}];
+         {"question":"What is the capital of Assyria?", "answer":"Assur"}];
      where question is the question text and answer is the answer. The questions are loaded
      randomly onto the page.
     */

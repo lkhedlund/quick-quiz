@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- This version has very little CSS styling. If you would like a styled version, check out the standard_fc.html-->
+    <title>Basic Flashcards</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Interactive Student Apps">
+    <meta name="keywords" content="JavaScript,jQuery,quizzes,flashcards,students">
+    <meta name="author" content="Lars Hedlund">
+  	<!-- jQuery -->
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  	<!-- Local Framework -->
+      <!-- Questions location (MUST be called before the App)-->
+      <script src='cards.js'></script>
+      <!-- App location -->
+  		<script src='FlashcardApp.js'></script>
+      <!-- A little bit of styling to keep everything displayed as a 'card'-->
+    <style>
+    .card-container {
+        width: 40%;
+        min-height: 250px;
+        min-width: 323px;
+        border: 5px solid #F5F5F5;
+    }
+
+        .card-container .card-inner {
+            min-height: 200px;
+            padding: 10px;
+        }
+
+        .card-container .card-navigate {
+            height: 50px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+  <div class="card-container">
+      <div class="card-inner">
+        <h1 id="flashcard" style="text-align: center;">
+          <!-- the flashcard will load here -->
+        </h1>
+      </div>
+      <div class="card-navigate">
+        <button id="next">Next</button>
+        <button id="flip" style="float: right;">Flip</button>
+      </div>
+    </div>
+
+<!-- Start of Javascript -->
+<script>
+    $(document).ready(function() {
+		FlashcardApp.init();
+    });
+
+    $('#flip, #next').on('click', function() {
+        FlashcardApp.flip_card(this.id);
+    });
+</script>
+</body>
+</html>
