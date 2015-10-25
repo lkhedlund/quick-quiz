@@ -13,8 +13,8 @@ VERSION: 1.0
 
 // Score and exercise tracking
 TOTAL = exercises.length;
-CURRENT = 0;
-SCORE = 0;
+current = 0;
+score = 0;
 
 // Holds all of the students' answers to be displayed at the end of the quiz.
 var student_answers = [];
@@ -47,11 +47,11 @@ MultipleChoiceApp.load_question = function() {
     var $display_question = $('#question'),
         $display_options = $('#options');
 
-    var current_exercise = exercises[CURRENT];
+    var current_exercise = exercises[current];
     // Refresh content
     MultipleChoiceApp.refresh();
     // Load the question and question number into the div container
-    $display_question.append((CURRENT + 1) + ": " + current_exercise["question"]);
+    $display_question.append((current + 1) + ": " + current_exercise["question"]);
 
     // Randomly displays options and answers from the exercises array.
     var choices = current_exercise["options"].split(',');
@@ -77,11 +77,11 @@ MultipleChoiceApp.advance_question = function(id_value) {
 
     // Start of button logic checks.
     if (id_value == 'restart') {
-        CURRENT = 0;
-        SCORE = 0;
+        current = 0;
+        score = 0;
     } else if (id_value == 'submit') {
         // Check to see whether or not the answer is correct
-        var current_exercise = exercises[CURRENT];
+        var current_exercise = exercises[current];
         var val = $('input:checked').val();
 
         /* BUG FIX: Add the answer to a hidden field to pull &thorn; and &aelig; correctly, or else they are pulled literally (with & and ;) from array. */
@@ -92,19 +92,19 @@ MultipleChoiceApp.advance_question = function(id_value) {
 
         // Validate the user's input to change score
         if (val == answer) {
-            SCORE++;
+            score++;
         };
         // Add the answer to the student_answers array for tracking
         student_answers.push(val);
         // Update current to advance to next question
-        CURRENT++;
+        current++;
     } else {
         // Skip is the only other option, so advance the question.
-        CURRENT++;
+        current++;
     };
 
     // Determine which buttons to show
-    if (CURRENT == TOTAL) {
+    if (current == TOTAL) {
         $submit.attr('disabled', true);
         $skip.attr('disabled', true);
         MultipleChoiceApp.show_score();
@@ -114,7 +114,7 @@ MultipleChoiceApp.advance_question = function(id_value) {
         $skip.attr('disabled', false);
         MultipleChoiceApp.load_question();
     };
-    console.log("Current, Score, Total:" + CURRENT, SCORE, TOTAL)
+    console.log("Current, Score, Total:" + current, score, TOTAL)
 };
 
 MultipleChoiceApp.show_score = function() {
@@ -130,7 +130,7 @@ MultipleChoiceApp.show_score = function() {
 
     // Displays the congratulations message and score.
     var display_score = congratulations + "<br>";
-    display_score += "<h3>Your final score is " + SCORE + " out of " + TOTAL + ".</h3>";
+    display_score += "<h3>Your final score is " + score + " out of " + TOTAL + ".</h3>";
     // Displays the user's choice and the correct answer.
     for (i = 0; i < TOTAL; i++) {
         var current_exercise = exercises[i];
