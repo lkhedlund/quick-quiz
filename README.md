@@ -1,4 +1,4 @@
-# Interactive Student Applications
+# Quick Quiz
 
 This repository houses web modules containing quizzes, flashcards, and other apps to help teachers connect with students. I created these apps for a university professor I worked closely with in the past as part of a site-wide redesign. I hope others will find it useful for their classes as well.
 
@@ -21,7 +21,7 @@ Please do! I wrote these with only a few weeks of Javascript under my belt (alth
 
 My personal recommendation is [Atom](https://atom.io/). It has delightful syntax highlighting and is available on every platform.
 
-## What's next? 
+## What's next?
 Here is a short to-do list of features/apps I would like to add at some point:
-* Ability to select which flashcard questions you want to practice (preferably dynamically while using the app). 
+* Ability to select which flashcard questions you want to practice (preferably dynamically while using the app).
 * Other quiz types, like fill in the blank and an autocorrect 'long answer'.
