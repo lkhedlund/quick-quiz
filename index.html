@@ -111,63 +111,6 @@
 
             <p>My personal recommendation is <a href="https://atom.io/">Atom</a>. It has delightful syntax highlighting and is available on every platform.</p>
           </section>
-          <section>
-            <h3>Demos</h3>
-            <h4>Flashcard App</h4>
-            <body>
-              <div class="card-wide mdl-card mdl-shadow--2dp">
-                <div class="mdl-card__supporting-text">
-                  <h1 id="flashcard" style="text-align: center;">
-                    <!-- the flashcard will load here -->
-                  </h1>
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="next">Next</button>
-                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="float: right;" id="flip">Flip</button>
-                </div>
-              </div>
-
-            <!-- Start of Flashcard Javascript -->
-            <script>
-                $(document).ready(function() {
-                FlashcardApp.init();
-                });
-
-                $('#flip, #next').on('click', function() {
-                    FlashcardApp.flip_card(this.id);
-                });
-            </script>
-
-            <h4>Multiple Choice Quiz App</h4>
-            <div class="card-wide mdl-card mdl-shadow--2dp">
-              <div class="mdl-card__supporting-text">
-                <h2 id="question">
-                  <!--The question will load here -->
-                </h2>
-                <div id="options">
-                  <!-- the choices will load here -->
-                </div>
-              </div>
-              <div class="mdl-card__actions mdl-card--border">
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="skip">Skip</button>
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="restart">Restart</button>
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="float: right;" id="submit">Submit</button>
-              </div>
-            </div>
-
-          <!-- This hidden input is included to help with html characters (i.e. &thorn;). It's best to just leave it, even if you don't think you need it. -->
-          <input type="hidden" id="answer">
-
-          <!-- Start of Quiz Javascript -->
-          <script>
-              $(document).ready(function() {
-              MultipleChoiceApp.init();
-              });
-            $('#submit, #skip, #restart').on('click', function() {
-              MultipleChoiceApp.advance_question(this.id);
-            });
-          </script>
-          </section>
         </div>
       </div>
     <footer class="footer mdl-mini-footer">
