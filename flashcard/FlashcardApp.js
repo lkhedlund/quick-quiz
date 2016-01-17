@@ -7,7 +7,7 @@ MAIN FEATURES:
 (3) User can skip or randomly move through cards at their own pace.
 (4) Card will load 'indefinitely', including repeats.
 BUGS: None known
-VERSION: 1.0
+VERSION: 1.2
 */
 
 $(function() {

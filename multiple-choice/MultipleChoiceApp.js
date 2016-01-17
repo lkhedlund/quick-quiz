@@ -8,7 +8,7 @@ MAIN FEATURES:
 (4) Verifies answers and tracks score.
 
 BUGS: (1:Fixed) Special html characters (like &thorn;) could not be checked against the correct answer.
-VERSION: 1.0
+VERSION: 1.2
 */
 
 $(function() {
