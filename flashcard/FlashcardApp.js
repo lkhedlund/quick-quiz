@@ -10,14 +10,12 @@ BUGS: None known
 VERSION: 1.0
 */
 
-var FlashcardApp = function() {
-  TOTAL = cards.length;
+$(function() {
 
   init();
 
   function init() {
-    // Initialize 'last' question at -1 to start with a fresh question
-    last = -1;
+    TOTAL = cards.length;
     loadCard();
   }
 
@@ -90,4 +88,5 @@ var FlashcardApp = function() {
   $('button').on('click', function() {
     flipCard(this.id);
   });
-};
+
+});
