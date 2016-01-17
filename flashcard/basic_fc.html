@@ -7,13 +7,8 @@
     <meta name="description" content="Interactive Student Apps">
     <meta name="keywords" content="JavaScript,jQuery,quizzes,flashcards,students">
     <meta name="author" content="Lars Hedlund">
-  	<!-- jQuery -->
-  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   	<!-- Local Framework -->
-      <!-- Questions location (MUST be called before the App)-->
-      <script src='cards.js'></script>
-      <!-- App location -->
-  		<script src='FlashcardApp.js'></script>
+
       <!-- A little bit of styling to keep everything displayed as a 'card'-->
     <style>
     .card-container {
@@ -46,12 +41,17 @@
         <button id="flip" style="float: right;">Flip</button>
       </div>
     </div>
-
-<!-- Start of Javascript -->
-<script>
-    $(function() {
-		    FlashcardApp.init();
-    });
-</script>
+  <!-- Start of Javascript -->
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <!-- Questions location (MUST be called before the App)-->
+  <script src='cards.js'></script>
+  <!-- App location -->
+  <script src='FlashcardApp.js'></script>
+  <script>
+      $(function() {
+        FlashcardApp();
+      });
+  </script>
 </body>
 </html>
