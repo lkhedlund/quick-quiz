@@ -11,13 +11,6 @@
       <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.blue-amber.min.css" />
       <script src="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.min.js"></script>
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  	<!-- jQuery -->
-  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  	<!-- Local Framework -->
-      <!-- Questions location (MUST be called before the App)-->
-      <script src='cards.js'></script>
-      <!-- App location -->
-  		<script src='FlashcardApp.js'></script>
 </head>
 <body>
   <div class="card-wide mdl-card mdl-shadow--2dp" style="min-width: 33%;">
@@ -33,14 +26,11 @@
   </div>
 
 <!-- Start of Javascript -->
-<script>
-    $(document).ready(function() {
-		FlashcardApp.init();
-    });
-
-    $('#flip, #next').on('click', function() {
-        FlashcardApp.flip_card(this.id);
-    });
-</script>
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<!-- Questions location (MUST be called before the App)-->
+<script src='cards.js'></script>
+<!-- App location -->
+<script src='FlashcardApp.js'></script>
 </body>
 </html>

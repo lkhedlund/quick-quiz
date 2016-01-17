@@ -11,13 +11,6 @@
       <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.blue-amber.min.css" />
       <script src="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.min.js"></script>
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  	<!-- jQuery -->
-  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  	<!-- Local Framework -->
-      <!-- Questions location (MUST be called before the App)-->
-      <script src='exercises.js'></script>
-      <!-- App location -->
-  		<script src='MultipleChoiceApp.js'></script>
 </head>
 
 <body>
@@ -41,14 +34,12 @@
 <input type="hidden" id="answer">
 
 <!-- Start of Javascript: This is where the magic happens! -->
-<script>
-    $(document).ready(function() {
-		MultipleChoiceApp.init();
-    });
-	$('#submit, #skip, #restart').on('click', function() {
-		MultipleChoiceApp.advance_question(this.id);
-	});
-</script>
-
+<!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<!-- Local Framework -->
+  <!-- Questions location (MUST be called before the App)-->
+  <script src='exercises.js'></script>
+  <!-- App location -->
+  <script src='MultipleChoiceApp.js'></script>
 </body>
 </html>

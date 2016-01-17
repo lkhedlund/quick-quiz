@@ -99,7 +99,8 @@ $(function() {
           // Update current to advance to next question
           current++;
       } else {
-          // Skip is the only other option, so advance the question.
+          // Add blank to student answers, since the question was skipped
+          student_answers.push("blank");
           current++;
       };
 
