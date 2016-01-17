@@ -15,8 +15,14 @@ $(function() {
   init();
 
   function init() {
-    TOTAL = cards.length;
+    cloneCards();
     loadCard();
+  }
+
+  function cloneCards() {
+    /* Creates a copy of the cards so that the user gets one of each card
+    before starting over. */
+    cloned_cards = JSON.parse(JSON.stringify(cards));
   }
 
   function refresh() {
@@ -41,16 +47,17 @@ $(function() {
     refresh();
 
     // Selects a random question
-    current = Math.floor(Math.random() * TOTAL);
-    if (current == last) {
-        current = Math.floor(Math.random() * TOTAL);
-    };
-    var current_card = cards[current];
+    if (cloned_cards.length === 0) {
+      refill();
+    }
+    function refill() {
+      cloneCards();
+    }
+    current_card = cloned_cards.splice(Math.floor(Math.random() * cloned_cards.length), 1)[0];
+
     // Loads a new question
     $display_card.append(current_card["question"]);
     $display_card.attr('value','question');
-    // Ensure that the same question does not come up twice in a row.
-    last = current;
   }
 
   function flipCard(id_value) {
@@ -59,9 +66,8 @@ $(function() {
     */
 
     // Change these variables if you change the div ids
-    var $display_card = $('#flashcard');
-    var current_card = cards[current];
-    var card_value = $display_card.attr('value');
+    var $display_card = $('#flashcard'),
+        card_value = $display_card.attr('value');
 
     // Start of button logic checks.
     if (id_value == 'flip') {
