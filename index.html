@@ -11,11 +11,6 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!-- jQuery -->
   		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <!--Flashcard and Quiz Demo files-->
-      <script src='demo-scripts/cards.js'></script>
-      <script src='demo-scripts/FlashcardApp.js'></script>
-      <script src='demo-scripts/exercises.js'></script>
-  		<script src='demo-scripts/MultipleChoiceApp.js'></script>
     <style>
     #view-source {
       position: fixed;
@@ -93,23 +88,72 @@
             </div>
             <h2>Quick Quiz Apps</h3>
           <section>
-            <p>This repository houses web modules containing quizzes, flashcards, and other apps to help teachers connect with students. I created these apps for a university professor I worked closely with in the past as part of a site-wide redesign. I hope others will find it useful for their classes as well.</p>
+            <p>
+            This repository houses web applications containing quizzes, flashcards, and other apps to help teachers connect with students. I created these apps for a university professor I worked closely with in the past as part of a site-wide redesign. I hope others will find it useful for their classes as well.
+            </p>
 
-            <h4>No server-side support is required!</h4>
+            <h2>Features</h2>
+            <h3>No Server Support Required</h3>
+            <p>
+            You can change the exercise questions using the Javascript arrays contained in each folder. Everything can be uploaded, and will work, on a personal website or university-hosted site.
+            </p>
 
-            <p>You can change the exercise questions using the Javascript arrays contained in each folder. Everything can be uploaded, and will work, on a personal website or university-hosted site.</p>
+            <h3>Who is this for?</h3>
+            <p>
+            Everyone, especially those without programming experience. I wanted to make something that was easy to make changes to and load up without much fuss. This ease is why I chose to use Google's Material Design framework for styling. You can add these to any website without having to play around with CSS and other scripts. Win-win!
+            </p>
 
-            <h4>Who is this for?</h4>
+            <h3>Answer Security</h3>
+            <p>
+            Please note that these are meant for practice and require some trust of your students. It should be easy for most to find the answers to the quizzes. You should therefore treat these as practice for students to self-test their own skills.
+            </p>
 
-            <p>Everyone, especially those without programming experience. I wanted to make something that was easy to make changes to and load up without much fuss. This ease is why I chose to use Google's Material Design framework for styling. You can add these to any website without having to play around with CSS and other scripts. Win-win!</p>
+            <h3>Can I contribute/fork this project?</h3>
+            <p>
+              Please do! I wrote these with only a few weeks of Javascript under my belt (although experience in other programming languages helped considerably). These are bound to be a bit rough under the edges, but they work well and that's what matters, right?
+            </p>
+          </section>
+          <section>
+            <h3>Demos</h3>
+            <h4>Flashcard App</h4>
+            <body>
+             <div class="card-wide mdl-card mdl-shadow--2dp">
+               <div class="mdl-card__supporting-text">
+                 <h1 id="flashcard" style="text-align: center;">
+                   <!-- the flashcard will load here -->
+                 </h1>
+               </div>
+               <div class="mdl-card__actions mdl-card--border">
+                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="next">Next</button>
+                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="float: right;" id="flip">Flip</button>
+               </div>
+             </div>
 
-            <h4>Can I contribute/fork this project?</h4>
+            <h4>Multiple Choice Quiz App</h4>
+            <div class="card-wide mdl-card mdl-shadow--2dp">
+             <div class="mdl-card__supporting-text">
+               <h2 id="question">
+                 <!--The question will load here -->
+               </h2>
+               <div id="options">
+                 <!-- the choices will load here -->
+               </div>
+             </div>
+             <div class="mdl-card__actions mdl-card--border">
+               <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="skip">Skip</button>
+               <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="restart">Restart</button>
+               <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="float: right;" id="submit">Submit</button>
+             </div>
+            </div>
 
-            <p>Please do! I wrote these with only a few weeks of Javascript under my belt (although experience in other programming languages helped considerably). These are bound to be a bit rough under the edges, but they work well and that's what matters, right?</p>
+            <!-- This hidden input is included to help with html characters (i.e. &thorn;). It's best to just leave it, even if you don't think you need it. -->
+            <input type="hidden" id="answer">
 
-            <h4>I'm having a hard time reading the code. Is there a good way to view it?</h4>
-
-            <p>My personal recommendation is <a href="https://atom.io/">Atom</a>. It has delightful syntax highlighting and is available on every platform.</p>
+            <!-- Start of App files -->
+            <script src='./flashcard/cards.js'></script>
+            <script src='./flashcard/FlashcardApp.js'></script>
+            <script src='./multiple-choice/exercises.js'></script>
+            <script src='./multiple-choice/MultipleChoiceApp.js'></script>
           </section>
         </div>
       </div>
