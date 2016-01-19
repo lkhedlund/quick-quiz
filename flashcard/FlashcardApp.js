@@ -75,8 +75,8 @@ $(function() {
         card_value = $display_card.attr('value');
 
     // Start of button logic checks.
-    if (id_value == 'flip') {
-        if (card_value == 'question') {
+    if (id_value === 'flip') {
+        if (card_value === 'question') {
             // Refresh content
             refresh();
             // Load side
@@ -88,12 +88,13 @@ $(function() {
             // Load side
             $display_card.append(current_card["question"]);
             $display_card.attr('value','question');
-        };
-    } else {
+        }
+    }
+    if (id_value === 'next') {
         // Next is the only other option, so pull a new card.
         loadCard();
-    };
-  };
+    }
+  }
 
   // When a user clicks on the button, grab the id and complete the action
   $('button').on('click', function() {

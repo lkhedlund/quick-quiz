@@ -61,8 +61,8 @@ $(function() {
           var write_option = '<input type="radio" name="choice" value="' + choices[i] + '">';
           $display_options.append(write_option + choices[i] + "<br>");
           choices.splice(i, 1);
-      };
-  };
+      }
+  }
 
   function advanceQuestion(id_value) {
       /* METHOD: Move the exercise forward through button selection.
@@ -76,10 +76,12 @@ $(function() {
           $submit = $('#submit');
 
       // Start of button logic checks.
-      if (id_value == 'restart') {
+      if (id_value === 'restart') {
           current = 0;
           score = 0;
-      } else if (id_value == 'submit') {
+          student_answers = [];
+      }
+      if (id_value === 'submit') {
           // Check to see whether or not the answer is correct
           var current_exercise = exercises[current];
           var val = $('input:checked').val();
@@ -91,21 +93,22 @@ $(function() {
           //END FIX
 
           // Validate the user's input to change score
-          if (val == answer) {
+          if (val === answer) {
               score++;
-          };
+          }
           // Add the answer to the student_answers array for tracking
           student_answers.push(val);
           // Update current to advance to next question
           current++;
-      } else {
+      }
+      if (id_value === 'skip') {
           // Add blank to student answers, since the question was skipped
           student_answers.push("blank");
           current++;
-      };
+      }
 
       // Determine which buttons to show
-      if (current == TOTAL) {
+      if (current === TOTAL) {
           $submit.attr('disabled', true);
           $skip.attr('disabled', true);
           showScore();
@@ -114,9 +117,8 @@ $(function() {
           $submit.attr('disabled', false);
           $skip.attr('disabled', false);
           loadQuestion();
-      };
-      console.log("Current, Score, Total:" + current, score, TOTAL)
-  };
+      }
+  }
 
   function showScore() {
       /* METHOD: Dispays a customized congratulations and the score, followed by each question's text and its answer (along with the user's selection).
