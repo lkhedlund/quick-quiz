@@ -13,9 +13,9 @@ VERSION: 1.2
 
 $(function() {
   // Score and exercise tracking
-  TOTAL = exercises.length;
-  current = 0;
-  score = 0;
+  var TOTAL = exercises.length,
+    current = 0,
+    score = 0;
 
   // Holds all of the students' answers to be displayed at the end of the quiz.
   var student_answers = [];
@@ -84,7 +84,7 @@ $(function() {
           var current_exercise = exercises[current];
           var val = $('input:checked').val();
 
-          /* BUG FIX: Add the answer to a hidden field to pull &thorn; and &aelig; correctly, or else they are pulled literally (with & and ;) from array. */
+          /* NOTE: Bug fix for displaying characters. Added the answer to a hidden field to pull &thorn; and &aelig; correctly, or else they are pulled literally (with & and ;) from array. */
           var write_answer = '<input type="hidden" id="answer" value="' +    current_exercise["answer"] + '">';
           $display_options.append(write_answer);
           var answer = $('#answer').val();
@@ -126,12 +126,8 @@ $(function() {
       // Refresh content
       refresh();
 
-      // The message that will be displayed to the user when he or she finishes
-      var congratulations = "<h2>Great work!</h2>";
-
-      // Displays the congratulations message and score.
-      var display_score = congratulations + "<br>";
-      display_score += "<h3>Your final score is " + score + " out of " + TOTAL + ".</h3>";
+      // Display the user's final score
+      var display_score = "<h3>Your final score is " + score + " out of " + TOTAL + ".</h3>";
       // Displays the user's choice and the correct answer.
       for (i = 0; i < TOTAL; i++) {
           var current_exercise = exercises[i];

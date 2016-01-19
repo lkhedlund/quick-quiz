@@ -12,17 +12,21 @@ VERSION: 1.2
 
 $(function() {
 
+  /* All cards are loaded from a global cards array contained in cards.js.
+  The clone action allows the user to loop through one random set of cards before starting over.
+  */
+  var cloned_cards = cloneCards();
+
   init();
 
   function init() {
-    cloneCards();
     loadCard();
   }
 
   function cloneCards() {
     /* Creates a copy of the cards so that the user gets one of each card
     before starting over. */
-    cloned_cards = JSON.parse(JSON.stringify(cards));
+    return JSON.parse(JSON.stringify(cards));
   }
 
   function refresh() {
@@ -40,7 +44,8 @@ $(function() {
      where question is the question text and answer is the answer. The questions are loaded
      randomly onto the page.
     */
-    // Change these variables if you change the div ids
+
+    // Change this if you change the div ids
     var $display_card = $('#flashcard');
 
     // Refresh content
@@ -51,7 +56,7 @@ $(function() {
       refill();
     }
     function refill() {
-      cloneCards();
+      cloned_cards = cloneCards();
     }
     current_card = cloned_cards.splice(Math.floor(Math.random() * cloned_cards.length), 1)[0];
 
