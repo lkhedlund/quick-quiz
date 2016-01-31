@@ -8,34 +8,34 @@ MAIN FEATURES:
 (4) Card will load 'indefinitely', including repeats.
 BUGS: None known
 
-VERSION: 1.3
+VERSION: 1.4
 */
 
 $(function() {
 
-  /*
-  The clone action allows the user to loop through one random set of cards before starting over.
-  */
-
-  // Rename cards.js to the name of the file and path.
-  var cards_location = 'cards.js';
+  // The filename and path of cards.js (only used if cards fails to load)
+  var CARDS_LOCATION = 'cards.js';
 
   try {
+    // Attempt to start the app, assuming everything has been defined properly.
     init();
   } catch (e) {
-    $('body').append(e + ". The cards file may be missing or invalid.")
     if (e instanceof ReferenceError) {
-      // fallback if the script containing the cards is missing
-      $.getScript(cards_location, function() {
+      // Fallback if hmtl file is missing script tag
+      $.getScript(CARDS_LOCATION, function() {
         init();
       });
+      $('body').append(e + ". The cards file may be missing or invalid.")
     } else {
-      console.log(e);
+      throw e;
     }
   }
 
   function init() {
-    cloned_cards = cloneCards();
+    /*
+    The clone action allows the user to loop through one random set of cards before starting over.
+    */
+    clonedCards = cloneCards();
     loadCard();
   }
 
@@ -57,44 +57,44 @@ $(function() {
     */
 
     // Change this if you change the div ids
-    var display_card = $('#flashcard');
+    var displayCard = $('#flashcard');
 
     // Selects a random question
-    if (cloned_cards.length === 0) {
+    if (clonedCards.length === 0) {
       refill();
     }
     function refill() {
-      cloned_cards = cloneCards();
+      clonedCards = cloneCards();
     }
-    current_card = cloned_cards.splice(Math.floor(Math.random() * cloned_cards.length), 1)[0];
+    currentCard = clonedCards.splice(Math.floor(Math.random() * clonedCards.length), 1)[0];
 
     // Loads a new question
-    display_card.html(current_card["question"]);
-    display_card.attr('value','question');
+    displayCard.html(currentCard["question"]);
+    displayCard.attr('value','question');
   }
 
-  function flipCard(id_value) {
-    /* METHOD: Flip the card over to show the answer and/or reshow the question.
+  function flipCard(idValue) {
+    /* Flip the card over to show the answer and/or reshow the question.
     Only changes once the user chooses next.
     */
 
     // Change these variables if you change the div ids
-    var display_card = $('#flashcard'),
-        card_value = display_card.attr('value');
+    var displayCard = $('#flashcard'),
+        cardValue = displayCard.attr('value');
 
     // Start of button logic checks.
-    if (id_value === 'flip') {
-        if (card_value === 'question') {
+    if (idValue === 'flip') {
+        if (cardValue === 'question') {
             // Load side
-            display_card.html(current_card["answer"]);
-            display_card.attr('value','answer');
+            displayCard.html(currentCard["answer"]);
+            displayCard.attr('value','answer');
         } else {
             // Load side
-            display_card.html(current_card["question"]);
-            display_card.attr('value','question');
+            displayCard.html(currentCard["question"]);
+            displayCard.attr('value','question');
         }
     }
-    if (id_value === 'next') {
+    if (idValue === 'next') {
         // Next is the only other option, so pull a new card.
         loadCard();
     }
