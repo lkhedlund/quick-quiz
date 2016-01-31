@@ -6,6 +6,7 @@ MAIN FEATURES:
 (2) User can flip the 'card' by clicking on a selectable div container (#card)
 (3) User can skip or randomly move through cards at their own pace.
 (4) Card will load 'indefinitely', including repeats.
+(5) All cards will cycle through once before reseting and starting over.
 BUGS: None known
 
 VERSION: 1.4
@@ -13,7 +14,7 @@ VERSION: 1.4
 
 $(function() {
 
-  // The filename and path of cards.js (only used if cards fails to load)
+  // The filename and path of cards.js (only used if it fails to load)
   var CARDS_LOCATION = 'cards.js';
 
   try {
@@ -21,7 +22,7 @@ $(function() {
     init();
   } catch (e) {
     if (e instanceof ReferenceError) {
-      // Fallback if hmtl file is missing script tag
+      // Fallback if hmtl file is missing script tag with cards.js
       $.getScript(CARDS_LOCATION, function() {
         init();
       });

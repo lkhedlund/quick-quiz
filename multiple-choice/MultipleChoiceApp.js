@@ -8,28 +8,38 @@ MAIN FEATURES:
 (4) Verifies answers and tracks score.
 
 BUGS: (1:Fixed) Special html characters (like &thorn;) could not be checked against the correct answer.
-VERSION: 1.2
+VERSION: 1.4
 */
 
 $(function() {
-  // Score and exercise tracking
-  var TOTAL = exercises.length,
-    current = 0,
+
+  // The filename and path of exercises.js (only used if it fails to load)
+  var EXERCISES_LOCATION = 'exercises.js';
+  // Holds all of the students' answers to be displayed at the end of the quiz.
+  var studentAnswers = [];
+  // Set the current number and total scores
+  var current = 0,
     score = 0;
 
-  // Holds all of the students' answers to be displayed at the end of the quiz.
-  var student_answers = [];
+  try {
+    // Attempt to start the app, assuming everything has been defined properly.
+    var TOTAL = exercises.length;
+    init();
+  } catch (e) {
+    if (e instanceof ReferenceError) {
+      // Fallback if hmtl file is missing script tag with exercises.js
+      $.getScript(EXERCISES_LOCATION, function() {
+        init();
+      });
+      $('body').append(e + ". The exercises file may be missing or invalid.")
+    } else {
+      throw e;
+    }
+  }
 
-  init();
 
   function init() {
       loadQuestion();
-  };
-
-  function refresh() {
-      /* METHOD: Refreshes div ids that the questions and choices are written to. */
-      $('#question').html('');
-      $('#options').html('');
   };
 
   function loadQuestion() {
@@ -44,51 +54,53 @@ $(function() {
       */
 
       // Change these variables if you change the div ids
-      var $display_question = $('#question'),
-          $display_options = $('#options');
+      var displayQuestion = $('#question'),
+          displayOptions = $('#options');
 
-      var current_exercise = exercises[current];
-      // Refresh content
-      refresh();
+      var currentExercise = exercises[current];
       // Load the question and question number into the div container
-      $display_question.append((current + 1) + ": " + current_exercise["question"]);
+      questionText = (current + 1) + ": " + currentExercise["question"];
+      displayQuestion.html(questionText);
 
       // Randomly displays options and answers from the exercises array.
-      var choices = current_exercise["options"].split(',');
-      choices.push(current_exercise["answer"]);
+      var choices = currentExercise["options"].split(',');
+      choices.push(currentExercise["answer"]);
+      // Clear the container
+      displayOptions.html('');
+      // Loop through the options and add them to the div container
       while (choices.length != 0) {
           var i = Math.floor(Math.random() * choices.length);
-          var write_option = '<input type="radio" name="choice" value="' + choices[i] + '">';
-          $display_options.append(write_option + choices[i] + "<br>");
+          var writeOption = '<input type="radio" name="choice" value="' + choices[i] + '">';
+          displayOptions.append(writeOption + choices[i] + "<br>");
           choices.splice(i, 1);
       }
   }
 
-  function advanceQuestion(id_value) {
-      /* METHOD: Move the exercise forward through button selection.
-      INPUT: Button id for easier comparison in if/else statements
+  function advanceQuestion(idValue) {
+      /*
+      METHOD: Move the exercise forward through button selection.
       */
 
       // Change these variables if you change the div ids
-      var $skip = $('#skip'),
-          $restart = $('#restart'),
-          $display_options = $('#options'),
-          $submit = $('#submit');
+      var skip = $('#skip'),
+          restart = $('#restart'),
+          displayOptions = $('#options'),
+          submit = $('#submit');
 
       // Start of button logic checks.
-      if (id_value === 'restart') {
+      if (idValue === 'restart') {
           current = 0;
           score = 0;
-          student_answers = [];
+          studentAnswers = [];
       }
-      if (id_value === 'submit') {
+      if (idValue === 'submit') {
           // Check to see whether or not the answer is correct
-          var current_exercise = exercises[current];
+          var currentExercise = exercises[current];
           var val = $('input:checked').val();
 
           /* NOTE: Bug fix for displaying characters. Added the answer to a hidden field to pull &thorn; and &aelig; correctly, or else they are pulled literally (with & and ;) from array. */
-          var write_answer = '<input type="hidden" id="answer" value="' +    current_exercise["answer"] + '">';
-          $display_options.append(write_answer);
+          var writeAnswer = '<input type="hidden" id="answer" value="' +    currentExercise["answer"] + '">';
+          displayOptions.append(writeAnswer);
           var answer = $('#answer').val();
           //END FIX
 
@@ -96,26 +108,26 @@ $(function() {
           if (val === answer) {
               score++;
           }
-          // Add the answer to the student_answers array for tracking
-          student_answers.push(val);
+          // Add the answer to the studentAnswers array for tracking
+          studentAnswers.push(val);
           // Update current to advance to next question
           current++;
       }
-      if (id_value === 'skip') {
+      if (idValue === 'skip') {
           // Add blank to student answers, since the question was skipped
-          student_answers.push("blank");
+          studentAnswers.push("blank");
           current++;
       }
 
       // Determine which buttons to show
       if (current === TOTAL) {
-          $submit.attr('disabled', true);
-          $skip.attr('disabled', true);
+          submit.attr('disabled', true);
+          skip.attr('disabled', true);
           showScore();
       } else {
           // reset submit and skip if user restarts after final score is shown.
-          $submit.attr('disabled', false);
-          $skip.attr('disabled', false);
+          submit.attr('disabled', false);
+          skip.attr('disabled', false);
           loadQuestion();
       }
   }
@@ -124,20 +136,23 @@ $(function() {
       /* METHOD: Dispays a customized congratulations and the score, followed by each question's text and its answer (along with the user's selection).
       */
       // Change these variables if you change the div ids
-      var $display_score = $('#options');
-      // Refresh content
-      refresh();
+      var displayQuestion = $('#question'),
+          displayOptions = $('#options');
+
+      // Add your message here
+      var congratulations = "<h2>Quiz Breakdown</h2>";
+      displayQuestion.html(congratulations);
 
       // Display the user's final score
-      var display_score = "<h3>Your final score is " + score + " out of " + TOTAL + ".</h3>";
-      // Displays the user's choice and the correct answer.
+      var displayScore = "<h3>Your final score is " + score + " out of " + TOTAL + ".</h3>";
+      // Displays the user's choices and the correct answers.
       for (i = 0; i < TOTAL; i++) {
-          var current_exercise = exercises[i];
-          display_score += '<p><b>' + (i + 1) + ": " + current_exercise["question"] + '</b> </p>';
-          display_score += "<p>Your answer was " + student_answers[i] + '</p>';
-          display_score += "<p>The correct answer is " + current_exercise["answer"] + '</p>';
+          var currentExercise = exercises[i];
+          displayScore += '<p><b>' + (i + 1) + ": " + currentExercise["question"] + '</b> </p>';
+          displayScore += "<p>Your answer was " + studentAnswers[i] + '</p>';
+          displayScore += "<p>The correct answer is " + currentExercise["answer"] + '</p>';
       }
-      $display_score.html(display_score);
+      displayOptions.html(displayScore);
   };
 
   // Advance to the next question
