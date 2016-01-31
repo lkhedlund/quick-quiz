@@ -24,9 +24,3 @@ Please note that these are meant for practice and require some trust of your stu
 ## Can I contribute/fork this project?
 
 Please do! I wrote these with only a few weeks of Javascript under my belt (although experience in other programming languages helped considerably). These are bound to be a bit rough under the edges, but they work well and that's what matters, right?
-
-## What's next?
-Here is a short to-do list of features/apps I would like to add at some point:
-* Clean up and remove jQuery, making these JavaScript only as a way of futureproofing.
-* Ability to select which flashcard questions you want to practice (preferably dynamically while using the app).
-* Other quiz types, like fill in the blank and an autocorrect 'long answer'.
