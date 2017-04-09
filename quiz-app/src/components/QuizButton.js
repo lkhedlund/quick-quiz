@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 class QuizButton extends Component {
   render () {
-    return <button>{this.props.name}</button>;
+    return <button onClick={() => this.props.onClick()}>{this.props.name}</button>;
   }
 }
 

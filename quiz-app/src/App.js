@@ -6,11 +6,17 @@ import QuizButton from './components/QuizButton';
 import EXERCISES from './exercises/exercise_1.js';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       questionNumber: 0,
     };
+  }
+  handleClick() {
+    var nextQuestion = this.state.questionNumber + 1;
+    this.setState({
+      questionNumber: nextQuestion,
+    });
   }
   render () {
     let currentQuestion = EXERCISES[this.state.questionNumber];
@@ -28,7 +34,7 @@ class App extends Component {
         <div className="options">
           {options}
         </div>
-        <QuizButton name="Submit" />
+        <QuizButton name="Submit" onClick={() => this.handleClick()}/>
       </div>
     );
   }
