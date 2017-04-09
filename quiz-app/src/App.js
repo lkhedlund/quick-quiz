@@ -10,9 +10,16 @@ class App extends Component {
     super();
     this.state = {
       questionNumber: 0,
+      userChoice: null,
     };
   }
-  handleClick() {
+  setChoice(e) {
+    let choice = e.target.value;
+    this.setState({
+      userChoice: choice,
+    });
+  }
+  handleSubmit() {
     var nextQuestion = this.state.questionNumber + 1;
     this.setState({
       questionNumber: nextQuestion,
@@ -26,15 +33,14 @@ class App extends Component {
     });
     let answer = currentQuestion.answer;
     options.push(<QuizOption value={answer} key={answer} />);
-
     let question = currentQuestion.question;
     return (
       <div>
         <QuizQuestion question={question} />
-        <div className="options">
+        <div className="options" onChange={e => this.setChoice(e)}>
           {options}
         </div>
-        <QuizButton name="Submit" onClick={() => this.handleClick()}/>
+        <QuizButton name="Submit" onClick={() => this.handleSubmit()}/>
       </div>
     );
   }

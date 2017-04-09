@@ -4,7 +4,7 @@ class QuizOption extends Component {
   render () {
     return (
       <label>
-        <input type="radio" name="choice" value={this.props.value} />
+        <input type="radio" name="choice" value={this.props.value}/>
         {this.props.value}
       </label>
     );
